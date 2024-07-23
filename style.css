@@ -1,0 +1,201 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    font-size:45px;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+h3 {
+    font-size: large;
+}
+
+h4 {
+    font-size: medium;
+}
+
+h5 {
+    font-size: small;
+}
+
+h6 {
+    font-size: x-small;
+}
+
+p {
+    font-size: large;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #393939;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+}
+
+header * {
+    vertical-align: center;
+}
+
+.logo {
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+}
+
+.content {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    overflow: hidden;
+    flex: 25%;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+
+nav a {
+    display: block;
+    font-size: 16px;
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+nav a:hover {
+    background-color: #38825e;
+    color: white;
+}
+
+nav a:active {
+    background-color: #1f4f2f;
+    color: white;
+}
+
+.main-content {
+    flex: 75%;
+    padding: 20px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+img:hover, a:hover {
+    transform: scale(1.05) rotate(5deg);
+    transition: 0.15s;
+}
+
+.trail { /* className for the trail elements */
+    position: absolute;
+    height: 10px; width: 10px;
+    border-radius: 3px;
+    background: rgb(73, 70, 255);
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+form label {
+    display: inline-block;
+    margin: 5px 0;
+    font-size: large;
+}
+
+form input,textarea {
+    padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  width: 30%;
+  transition: 0.3s;
+}
+
+form input:not([type="submit"]):focus,textarea:focus {
+    width: 50%;
+}
+
+form textarea {
+    height: 100px;
+}
+
+form textarea:focus {
+    height: 200px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+input[type=submit]:active {
+    background-color: #3e8e41;
+}
+
+.main-content #count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    vertical-align: center;
+    font-size: 100px;
+    user-select: none;
+    z-index: 2;
+}
+
+.count-holder {
+    width: 100%;
+    height: 75vh;
+}
+
+#count-label {
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    user-select: none;
+}
