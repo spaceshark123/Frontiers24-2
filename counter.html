@@ -7,33 +7,58 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>My Website</title>
   </head>
-  <body>
+  <body id="counter-body">
     <script src="index.js" type="text/javascript"></script>
-    <script src="counter.js" type="text/javascript"></script>
     <main>
         <header>
           <image src="logo.png" alt="logo" class="logo">
-          <h1>Counter</h1>
+          <h1>Clicker Game</h1>
         </header>
         <div class="content">
           <!-- vertical navbar on left, stuff on right -->
-          <nav>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="aboutme.html">About Me</a></li>
-              <li><a href="mytown.html">My Town</a></li>
-              <li><a href="counter.html">Counter</a></li>
-              <li><a href="contactme.html">Contact Me</a></li>
-            </ul>
-          </nav>
+          <script id="replace_with_navbar" src="nav.js"></script>
           <div class="main-content">
-            <h2 id="count-label">Click the number</h2>
+            <div class="shop">
+                <div class="shop-amount-container">
+                    <button onclick="buy1()" class="shop-item" id="buy1">x1</button>
+                    <button onclick="buy10()" class="shop-item" id="buy10">x10</button>
+                    <button onclick="buy100()" class="shop-item" id="buy100">x100</button>
+                </div>
+                <button onclick="upgrade1()" class="upgrade" id="upgrade1"><div class="topright"><span id="upgrade1amt">1</span></div>Click Amount: <br><span class="upgrade-count" id="upgrade1cost"></span></button>
+                <button onclick="upgrade2()" class="upgrade" id="upgrade2"><div class="topright"><span id="upgrade2amt">x1</span></div>Click Multiplier: <br><span class="upgrade-count" id="upgrade2cost"></span></button>
+                <button onclick="gen(0)" class="upgrade generator"><div class="topright"><span id="gen1amt">0</span></div>Basic Generator:<br><span class="upgrade-count" id="gen1cost"></span></button>
+                <button onclick="gen(1)" class="upgrade generator"><div class="topright"><span id="gen2amt">0</span></div>Advanced Generator:<br><span class="upgrade-count" id="gen2cost"></span></button>
+                <button onclick="gen(2)" class="upgrade generator"><div class="topright"><span id="gen3amt">0</span></div>Elite Generator:<br><span class="upgrade-count" id="gen3cost"></span></button>
+                <button onclick="gen(3)" class="upgrade generator"><div class="topright"><span id="gen4amt">0</span></div>Ultimate Generator:<br><span class="upgrade-count" id="gen4cost"></span></button>
+                <button onclick="gen(4)" class="upgrade generator"><div class="topright"><span id="gen5amt">0</span></div>Quantum Generator:<br><span class="upgrade-count" id="gen5cost"></span></button>
+                <button onclick="gen(5)" class="upgrade generator"><div class="topright"><span id="gen6amt">0</span></div>Cosmic Generator:<br><span class="upgrade-count" id="gen6cost"></span></button>
+                <button onclick="gen(6)" class="upgrade generator"><div class="topright"><span id="gen7amt">0</span></div>Supreme Generator:<br><span class="upgrade-count" id="gen7cost"></span></button>
+                <button onclick="gen(7)" class="upgrade generator"><div class="topright"><span id="gen8amt">0</span></div>Mythic Generator:<br><span class="upgrade-count" id="gen8cost"></span></button>
+                <button onclick="gen(8)" class="upgrade generator"><div class="topright"><span id="gen9amt">0</span></div>Legendary Generator:<br><span class="upgrade-count" id="gen9cost"></span></button>
+                <button onclick="gen(9)" class="upgrade generator"><div class="topright"><span id="gen10amt">0</span></div>Exalted Generator:<br><span class="upgrade-count" id="gen10cost"></span></button>
+                <button onclick="gen(10)" class="upgrade generator"><div class="topright"><span id="gen11amt">0</span></div>Overlord Generator:<br><span class="upgrade-count" id="gen11cost"></span></button>
+                <button onclick="gen(11)" class="upgrade generator"><div class="topright"><span id="gen12amt">0</span></div>Omni Generator:<br><span class="upgrade-count" id="gen12cost"></span></button>
+                <button onclick="gen(12)" class="upgrade generator"><div class="topright"><span id="gen13amt">0</span></div>Hyper Generator:<br><span class="upgrade-count" id="gen13cost"></span></button>
+                <button onclick="gen(13)" class="upgrade generator"><div class="topright"><span id="gen14amt">0</span></div>Celestial Generator:<br><span class="upgrade-count" id="gen14cost"></span></button>
+                <button onclick="gen(14)" class="upgrade generator"><div class="topright"><span id="gen15amt">0</span></div>Ascendant Generator:<br><span class="upgrade-count" id="gen15cost"></span></button>
+                <button onclick="gen(15)" class="upgrade generator"><div class="topright"><span id="gen16amt">0</span></div>Stellar Generator:<br><span class="upgrade-count" id="gen16cost"></span></button>
+                <button onclick="gen(16)" class="upgrade generator"><div class="topright"><span id="gen17amt">0</span></div>Arcane Generator:<br><span class="upgrade-count" id="gen17cost"></span></button>
+                <button onclick="gen(17)" class="upgrade generator"><div class="topright"><span id="gen18amt">0</span></div>Galactic Generator:<br><span class="upgrade-count" id="gen18cost"></span></button>
+                <button onclick="gen(18)" class="upgrade generator"><div class="topright"><span id="gen19amt">0</span></div>Dimensional Generator:<br><span class="upgrade-count" id="gen19cost"></span></button>
+                <button onclick="gen(19)" class="upgrade generator"><div class="topright"><span id="gen20amt">0</span></div>Universal Generator:<br><span class="upgrade-count" id="gen20cost"></span></button>
+                <button onclick="gen(20)" class="upgrade generator"><div class="topright"><span id="gen21amt">0</span></div>Multiversal Generator:<br><span class="upgrade-count" id="gen21cost"></span></button>
+                <button onclick="gen(21)" class="upgrade generator"><div class="topright"><span id="gen22amt">0</span></div>Infinite Generator:<br><span class="upgrade-count" id="gen22cost"></span></button>
+            </div>
             <div class="count-holder">
                 <h1 id='count' onclick='increment()'>0</h1>
+                <h2 id="count-label">Click the number<br><span id="cps">0/s</span></h2>
+                <h2 class="tooltip">Insufficient Funds.</h2>
             </div>
           </div>
         </div>
         <footer>Made by Amogh Patnaik</footer>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="counter.js" type="text/javascript"></script>
   </body>
 </html>

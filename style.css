@@ -37,6 +37,11 @@ html, body {
     background-color: #ffffff;
 }
 
+body[id="counter-body"] {
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
 header {
     background-color: #393939;
     color: white;
@@ -66,8 +71,8 @@ header * {
 }
 
 nav {
-    overflow: hidden;
     flex: 25%;
+    width: 150px;
 }
 
 nav li {
@@ -90,6 +95,24 @@ nav a {
     transition: 0.15s;
 }
 
+nav #counter-link {
+    background-color: #525252;
+    text-emphasis: bold;
+    color: white;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+}
+
+nav #counter-link:hover {
+    background-color: #41ac57;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(55, 133, 87, 0.4), 0px 7px 13px -3px rgba(42, 126, 64, 0.3), inset 0px -3px 4px #307b45;
+}
+
+nav #counter-link:active {
+    background-color: #2f7f3f;
+    color: white;
+}
+
 nav a:hover {
     background-color: #38825e;
     color: white;
@@ -103,6 +126,7 @@ nav a:active {
 .main-content {
     flex: 75%;
     padding: 20px;
+    overflow: hidden;
 }
 
 footer {
@@ -121,13 +145,33 @@ img:hover, a:hover {
 }
 
 .trail { /* className for the trail elements */
+    position: absolute !important;
+    height: 10px !important; width: 10px !important;
+    border-radius: 3px !important;
+    user-select: none !important;
+    background: rgb(73, 70, 255) !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
+}
+
+.plustext {
     position: absolute;
-    height: 10px; width: 10px;
-    border-radius: 3px;
-    background: rgb(73, 70, 255);
-    z-index: 1000;
+    font-size: 20px;
+    color: black;
+    z-index: 999;
     pointer-events: none;
-  }
+    filter: opacity(100%);
+    transition: 2s;
+    font-size: 24px;
+    font-style: italic;
+    color: rgb(73, 70, 255);
+}
+
+.plustext.fade {
+    transition: 2s;
+    filter: opacity(0%);
+    transform: translate(0, -50px);
+}
 
 form label {
     display: inline-block;
@@ -177,25 +221,198 @@ input[type=submit]:active {
     background-color: #3e8e41;
 }
 
-.main-content #count {
+.count-holder {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#count {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 10%;
+    width: 80%;
     text-align: center;
     vertical-align: center;
     font-size: 100px;
     user-select: none;
     z-index: 2;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    transition: top 0.15s ease, font-size 0.3s ease;
+    text-wrap: none;
+    word-wrap: none;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-.count-holder {
-    width: 100%;
-    height: 75vh;
+#count:hover {
+    top: 49%;
+    font-size: 105px;
+}
+
+#count:active {
+    top: 49.5%;
+    font-size: 100px;
+    transition: top 0.05s ease, font-size 0.05s ease;
 }
 
 #count-label {
     position: absolute;
     left: 50%;
+top: 40%;
+transform: translate(-50%, -50%);
+width: 100%;
     text-align: center;
+    vertical-align: center;
     user-select: none;
+    pointer-events: none;
+    font-size: 4vw;
+    line-height: 0.9;
+}
+
+.shop {
+    height: 75vh;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: center;
+    position: absolute;
+    right: 2%;
+    overflow-x: hidden;
+    scrollbar-width:auto;
+    /* scrollbar should not cover content */
+    padding-right: 25px;
+}
+
+.shop-amount-container {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* border: 2px solid #000000; */
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 20%), 0px 7px 13px -3px rgb(45 35 66 / 25%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+}
+
+.shop-item {
+    display: block;
+    width: 1100%;
+    height: 100%;
+    z-index: 1001;
+    outline: 0;
+    border: 0;
+    font-size: 14px;
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+}
+
+.shop-item:hover:not(.selected) {
+    box-shadow: 0px 4px 8px rgba(40, 86, 130, 0.4), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+    transform: translateY(-2px);
+}
+
+.shop-item:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+.selected {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+    background-color: #10d337;
+}
+
+.upgrade {
+    display: block;
+    margin: 5px;
+    width: 100%;
+    height: 100px;
+    z-index: 1001;
+    
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 32px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+    padding: 15px;
+
+    transition: filter 0.15s ease;
+}
+
+.upgrade.generator {
+    background: radial-gradient( 100% 100% at 100% 0%, #e5c0ff 0%, #c669ff 100% );
+}
+
+.upgrade.expensive {
+    /* gray out */
+
+    transition: filter 0.07s ease;
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.upgrade:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+    transform: translateY(-2px);
+}
+.upgrade:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+.upgrade-count {
+    font-size: 35px;
+    color: #ffffff;
+    text-wrap: none;
+    word-wrap: none;
+    white-space: nowrap;
+}
+
+.topright {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    background-color: rgb(0, 0, 0);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow:-2px 2px 4px rgb(45 35 66 / 50%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+}
+
+#upgrade3amt {
+    position: relative;
+    bottom: 0.2em;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 30px;
+    color: hsl(0, 0%, 60%);
+    user-select: none;
+    transform: scale(1);
+}
+
+#cps {
+    font-size: 75%;
+    color: hsl(0, 100%, 50%);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }

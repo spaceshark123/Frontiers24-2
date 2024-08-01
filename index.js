@@ -21,8 +21,8 @@ var Dot = function() {
 // The Dot.prototype.draw() method sets the position of 
  // the object's <div> node
 Dot.prototype.draw = function() {
- this.node.style.left = this.x + "px";
- this.node.style.top = this.y + "px";
+ this.node.style.left = this.x - 5 + "px";
+ this.node.style.top = this.y - 5 + "px";
 };
 
 // Creates the Dot objects, populates the dots array
@@ -32,11 +32,11 @@ for (var i = 0; i < 12; i++) {
 }
 
 // This is the screen redraw function
-function draw() {
+function drawTrail() {
  // Make sure the mouse position is set everytime
    // draw() is called.
  var x = mouse.x,
-     y = mouse.y;
+   y = mouse.y;
  
  // This loop is where all the 90s magic happens
  dots.forEach(function(dot, index, dots) {
@@ -54,14 +54,14 @@ function draw() {
 addEventListener("mousemove", function(event) {
  //event.preventDefault();
  mouse.x = event.pageX;
- mouse.y = event.pageY;
+    mouse.y = event.pageY;
 });
 
 // animate() calls draw() then recursively calls itself
 // everytime the screen repaints via requestAnimationFrame().
  let hue = 0;
-function animate() {
-    draw();
+function animatePointer() {
+    drawTrail();
     
     //rotate hue of .trail background css property
     var trail = document.getElementsByClassName('trail');
@@ -70,11 +70,11 @@ function animate() {
     }
     hue++;
 
- requestAnimationFrame(animate);
+    requestAnimationFrame(animatePointer);
 }
 
 // And get it started by calling animate().
-animate();
+requestAnimationFrame(animatePointer);
 
 //whenever mouse is down, double width and height of .trail
 addEventListener("mousedown", function(event) {

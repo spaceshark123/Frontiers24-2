@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="pong.css">
+</head>
+<body>
+    <script src="index.js" type="text/javascript"></script>
+    <main>
+        <header>
+          <image src="logo.png" alt="logo" class="logo">
+          <h1>Pong!</h1>
+        </header>
+        <div class="content" class="body">
+            <!-- vertical navbar on left, stuff on right -->
+            <script id="replace_with_navbar" src="nav.js"></script>
+            <div class="main-content">
+            <h1 class="pong">PONG!</h1>
+            <h3 class="pong">By Amogh Patnaik</h3>
+            <h3 class="pong">Reach 7 to Win - Use Mouse to Interact with the Ball</h3>
+            <div class="pong">
+            <canvas id="gameboard" width="500" height="500" style="box-shadow: 0 0 10px 5px #000; margin: 10px;" class="pong"></canvas>
+            </div>
+            <div id="controls" class="pong">
+                <ul>
+                    <li><input type="checkbox" id="cpucheck1" checked><label class="pong">CPU 1</label></li>
+                    <li><input type="checkbox" id="cpucheck2" checked><label class="pong">CPU 2</label></li>
+                </ul>
+                <button id="reset" onclick="resetGame()" class="pong">RESET</button>
+                <ul>
+                <li><input step="1" type="range" id="difficulty" min="1" max="5" value="5" onchange="updateDifficulty()"><label class="pong" style="width: 13ch; height: 100%; display: inline-block; transform: translate(0, -6px); text-align: left !important; margin-left: 10px;">Difficulty</label></li>
+                <li><input step="1" type="range" id="speed" min="1" max="50" value="7" onchange="updateSpeed()"><label class="pong" style="width: 13ch; height: 100%; display: inline-block; transform: translate(0, -6px); text-align: left !important; margin-left: 10px;">Paddle Speed</label></li>
+                </ul>
+                <input type="checkbox" id="trajectorycheck" onchange="toggleTrajectory()" checked>
+                <label class="pong">Show Trajectory</label>
+            </div>
+            <!-- <audio id="bounce" class="pong">
+                <source src="bounce.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio> -->
+        </div>
+        <script src="controls.js"></script>
+        <script src="Ball.js"></script>
+        <script src="Paddle.js"></script>
+        <script src="pong.js"></script>
+    </main>
+</body>
+</html>
